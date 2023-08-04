@@ -1,0 +1,175 @@
+<nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+    <div class="container-fluid">    
+       
+    <ul class = "nav navbar-nav">
+        
+        
+        
+        <button (click)="back()"class="btn btn-primary navbar-btn">Go Back</button>      
+        
+    </ul>
+  
+    </div>
+  </nav>
+  <div style="background-image: url('https://www.comohotels.com/sites/default/files/COMO_Metropolitan_Miami_Beach_ZOOM_Backgrounds_4_0.jpg');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+  <div class="row d-flex justify-content-center">
+      <div class="col-lg-4">
+        <h2 style="text-align: center;"class="fw-bold mb-5"><b style="color:mediumblue">Register</b></h2>
+        <form #registerform="ngForm" (ngSubmit)="customerRegister()">
+          <!-- {{registerform.form.valid}} -->
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>First Name</label>
+                <input type="text" name="firstName" class="form-control" placeholder="First Name" [(ngModel)]="customer.firstName" required pattern="[A-Za-z]{1,32}"#firstname="ngModel"
+                [class.is-invalid]="firstname.invalid&&firstname.touched"/>
+                <!-- <small class="text-danger" [class.d-none]="firstname.valid||firstname.untouched">Required field</small> -->
+                <div *ngIf="firstname.errors && (firstname.invalid && firstname.touched)">
+                  <small class="text-danger" *ngIf="firstname.errors?.['required']">required field</small>
+                  <small class="text-danger"*ngIf="firstname.errors?.['pattern']">enter a valid name</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>Last Name</label>
+                <input type="text" name="lastName" class="form-control" placeholder="Last Name"[(ngModel)]="customer.lastName" pattern="[A-Za-z]{1,32}"#lastname="ngModel"
+                [class.is-invalid]="lastname.invalid"/>
+                <!-- <small class="text-danger" [class.d-none]="firstname.valid||firstname.untouched">Required field</small> -->
+                <div *ngIf="lastname.errors ">
+                  <small class="text-danger" *ngIf="lastname.errors?.['required']">required field</small>
+                  <small class="text-danger"*ngIf="lastname.errors?.['pattern']">enter a valid name</small>
+                </div>
+               
+              </div>
+            </div>
+              <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>Phone Number</label>
+                <input type="text" name="phoneNumber" class="form-control" placeholder="Phone Number"[(ngModel)]="customer.phoneNumber" required pattern="[789][0-9]{9}"#phonenumber="ngModel"
+                [class.is-invalid]="phonenumber.invalid&&phonenumber.touched"/>
+                <!-- <small class="text-danger" [class.d-none]="phonenumber.valid||phonenumber.untouched">Required field</small> -->
+                <div *ngIf="phonenumber.errors && (phonenumber.invalid && phonenumber.touched)">
+                  <small class="text-danger" *ngIf="phonenumber.errors?.['required']">required field</small>
+                  <small class="text-danger"*ngIf="phonenumber.errors?.['pattern']">enter a valid phone number</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>Date Of Birth</label>
+                <input type="date" name="dateOfBirth" class="form-control" placeholder="DOB" [(ngModel)]="customer.dateOfBirth" required #dateOfBirth="ngModel"
+                [class.is-invalid]="dateOfBirth.invalid&&dateOfBirth.touched"/>
+                <small class="text-danger" [class.d-none]="dateOfBirth.valid||dateOfBirth.untouched">Required field</small>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>District</label>
+                <input type="text" name="district" class="form-control" placeholder="District" [(ngModel)]="customer.district" required pattern="[a-zA-Z'-'\s]*"#district="ngModel"
+                [class.is-invalid]="district.invalid&&district.touched"/>
+                <!-- <small class="text-danger" [class.d-none]="district.valid||district.untouched">Required field</small> -->
+                <div *ngIf="district.errors && (district.invalid && district.touched)">
+                  <small class="text-danger" *ngIf="district.errors?.['required']">required field</small>
+                  <small class="text-danger"*ngIf="district.errors?.['pattern']">enter a valid district</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>State</label>
+                <input type="text" name="state" class="form-control" placeholder="State"[(ngModel)]="customer.state"required  pattern="[a-zA-Z'-'\s]*"#state="ngModel" 
+                [class.is-invalid]="state.invalid&&state.touched"/>
+                <!-- <small class="text-danger" [class.d-none]="state.valid||state.untouched">Required field</small> -->
+                <div *ngIf="state.errors && (state.invalid && state.touched)">
+                  <small class="text-danger" *ngIf="state.errors?.['required']">required field</small>
+                  <small class="text-danger"*ngIf="state.errors?.['pattern']">enter a valid state</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>Pincode</label>
+                <input type="text" name="pinCode" class="form-control" placeholder="Pincode" [(ngModel)]="customer.pincode"pattern="[0-9]{6}"#pincode="ngModel"
+                [class.is-invalid]="pincode.invalid&&state.touched"/>
+                <div *ngIf="pincode.errors && (pincode.invalid && pincode.touched)">
+                  <small class="text-danger" *ngIf="pincode.errors?.['required']">required field</small>
+                  <small class="text-danger"*ngIf="pincode.errors?.['pattern']">enter a valid zipcode</small>
+                </div>
+                
+              </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <label>Gender</label>
+          <div class="select">
+              <select [(ngModel)]="customer.gender" name="gender"placeholder="Gender"><option *ngFor = "let gender of genders">{{gender}}</option></select>
+          </div>
+              </div></div>
+            
+            </div>
+  
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label>Email</label>
+            <input type="email" name="emailID" class="form-control" placeholder="Email "[(ngModel)]="customer.email" required pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+            #email="ngModel"
+            [class.is-invalid]="email.invalid&&email.touched"/>
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors?.['required']">email id is required</small>
+              <small class="text-danger"*ngIf="email.errors?.['pattern']">enter valid email id</small>
+            </div>
+            <!-- <small class="text-danger" [class.d-none]="email.valid||email.untouched">Required field</small> -->
+  
+          </div>
+  
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password"[(ngModel)]="customer.password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+            #password="ngModel"          [class.is-invalid]="password.invalid&&password.touched"/>
+            
+            <!-- <small class="text-danger" [class.d-none]="password.valid||password.untouched">Required field</small> -->
+            <div *ngIf="password.errors && (password.invalid && password.touched)">
+              <small class="text-danger" *ngIf="password.errors?.['required']">password is required</small>
+              <small class="text-danger"*ngIf="password.errors?.['pattern']">must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label>Confirm Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password"[(ngModel)]="customer.confirmPassword" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+            #confirmPassword="ngModel"          [class.is-invalid]="confirmPassword.invalid&&confirmPassword.touched"/>
+            
+            <!-- <small class="text-danger" [class.d-none]="password.valid||password.untouched">Required field</small> -->
+            <div *ngIf="confirmPassword.errors && (confirmPassword.invalid && confirmPassword.touched)">
+              <small class="text-danger" *ngIf="confirmPassword.errors?.['required']">password is required</small>
+              <small class="text-danger"*ngIf="confirmPassword.errors?.['pattern']">must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+            </div>
+          </div>
+  
+         
+  
+          <!-- Submit button -->
+          <button [disabled]="registerform.form.invalid"type="submit" class="btn btn-primary btn-block mb-4">
+           Register
+          </button>
+          <div style="text-align: right;">
+          <a routerLink="/customerlogin" routerLinkActive="active" class="nav-link" ><b style="color:mediumblue">Already a user?</b> <b style="color: red;">Login now</b></a></div>
+        </form></div>
+       <div>
+         <br>
+         <br><br><br>
+  <span id="copyright"style="text-align:center"><b style="color: oldlace;">&reg;All rights reserved</b></span>
+  
+  
+  
+  
+  
+     
+  
+    

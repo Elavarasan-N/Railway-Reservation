@@ -1,0 +1,123 @@
+<div class="header" >
+  <nav>
+      <a class="navbar-brand" href="#">
+          <img src=".\assets\logo.jpg" width="100" height="100" class="d-inline-block align-centre" alt="">
+          <b style="font-size: large;">RAILRESERVE.IN</b>
+      </a>
+    <p style="font-size: large;"><strong>Life is a journey, enjoy the ride</strong></p>
+<nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+    <div class="container-fluid">
+        <button onclick="history.back()"class="btn btn-primary navbar-btn"style="width:80;height: 35;">Go Back</button>   
+
+  <ul class = "nav navbar-nav">
+    <button id="home"(click)="home()"><i   class="fa fa-home" ></i>Home</button>
+     <button id="home"(click)="contactUs()"> <i class="fa fa-phone"></i>Contact</button>
+
+     <button id="home"(click)="customerProfile()"> <i  class="bi bi-person"></i>Profile</button>
+
+  </ul>
+  <button (click)="logOut()"class="btn btn-danger navbar-btn">Log out</button>
+    </div>
+</nav>
+<div class="container rounded bg-white mt-5">
+    <div class="row">
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src=".\assets\profile.png" width="90"><span class="font-weight-bold">{{customer.firstName}}</span><span class="text-black-50">{{customer.email}}</span><span>{{customer.district}}</span></div>
+        </div>
+        <div class="col-md-8">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                        <button class="btn" id="b1"(click)="backToCustomerHomePlace(customer.customerId)"><i class="fa fa-home"></i><b>Home</b></button></div>
+                    <h6 class="text-right"><b>Edit Profile</b></h6>
+                </div>
+                <!-- <form #profileform="ngForm"> -->
+                <div class="row mt-2">
+                    <div class="col-md-6"><label>First Name</label><input type="text" class="form-control" placeholder="first name" [(ngModel)]="customer.firstName"required pattern="[A-Za-z]{1,32}"#firstname="ngModel"
+                        [class.is-invalid]="firstname.invalid&&firstname.touched"/>
+                        <!-- <small class="text-danger" [class.d-none]="firstname.valid||firstname.untouched">Required field</small> -->
+                        <div *ngIf="firstname.errors && (firstname.invalid && firstname.touched)">
+                          <small class="text-danger" *ngIf="firstname.errors?.['required']">Required Field</small>
+                          <small class="text-danger"*ngIf="firstname.errors?.['pattern']">Enter a valid First Name</small>
+                        </div></div>
+                    <div class="col-md-6"><label>Last Name</label><input type="text" class="form-control"[(ngModel)]="customer.lastName" placeholder="last name"
+                        pattern="[A-Za-z]{1,32}"#lastname="ngModel"
+                        [class.is-invalid]="lastname.invalid"/>
+                        <!-- <small class="text-danger" [class.d-none]="firstname.valid||firstname.untouched">Required field</small> -->
+                        <div *ngIf="lastname.errors ">
+                          <small class="text-danger" *ngIf="lastname.errors?.['required']">Required Field</small>
+                          <small class="text-danger"*ngIf="lastname.errors?.['pattern']">Enter a valid Last Name</small>
+                        </div></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label>DOB</label><input type="date" class="form-control" placeholder="DOB"[(ngModel)]="customer.dateOfBirth"
+                        required #dateOfBirth="ngModel"
+                        [class.is-invalid]="dateOfBirth.invalid&&dateOfBirth.touched"/>
+                        <small class="text-danger" [class.d-none]="dateOfBirth.valid||dateOfBirth.untouched">Required field</small>
+          </div>
+                    <div class="col-md-6"><label>Phone Number</label><input type="text" class="form-control" [(ngModel)]="customer.phoneNumber" placeholder="Phone number"required pattern="[789][0-9]{9}"#phonenumber="ngModel"
+                        [class.is-invalid]="phonenumber.invalid&&phonenumber.touched"/>
+                        <!-- <small class="text-danger" [class.d-none]="phonenumber.valid||phonenumber.untouched">Required field</small> -->
+                        <div *ngIf="phonenumber.errors && (phonenumber.invalid && phonenumber.touched)">
+                          <small class="text-danger" *ngIf="phonenumber.errors?.['required']">Required Field</small>
+                          <small class="text-danger"*ngIf="phonenumber.errors?.['pattern']">Enter a valid Phone Number</small>
+                        </div></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label>Email</label><input type="text" class="form-control" placeholder="email" [(ngModel)]="customer.email"
+                        required pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+          #email="ngModel"
+          [class.is-invalid]="email.invalid&&email.touched"/>
+          <div *ngIf="email.errors && (email.invalid && email.touched)">
+            <small class="text-danger" *ngIf="email.errors?.['required']">Email is Required</small>
+            <small class="text-danger"*ngIf="email.errors?.['pattern']">Enter valid Email</small>
+          </div></div>
+                    <div class="col-md-6"><label>District</label><input type="text" class="form-control"[(ngModel)]="customer.district" placeholder="district"required pattern="[a-zA-Z'-'\s]*"#district="ngModel"
+                        [class.is-invalid]="district.invalid&&district.touched"/>
+                        <!-- <small class="text-danger" [class.d-none]="district.valid||district.untouched">Required field</small> -->
+                        <div *ngIf="district.errors && (district.invalid && district.touched)">
+                          <small class="text-danger" *ngIf="district.errors?.['required']">Required Field</small>
+                          <small class="text-danger"*ngIf="district.errors?.['pattern']">Enter a valid District</small>
+                        </div></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label>State</label><input type="text" class="form-control" placeholder="state " [(ngModel)]="customer.state"required  pattern="[a-zA-Z'-'\s]*"#state="ngModel" 
+                        [class.is-invalid]="state.invalid&&state.touched"/>
+                        <!-- <small class="text-danger" [class.d-none]="state.valid||state.untouched">Required field</small> -->
+                        <div *ngIf="state.errors && (state.invalid && state.touched)">
+                          <small class="text-danger" *ngIf="state.errors?.['required']">Required Field</small>
+                          <small class="text-danger"*ngIf="state.errors?.['pattern']">Enter a valid State</small>
+                        </div></div>
+                    <div class="col-md-6"><label>Pincode</label><input type="text" class="form-control" [(ngModel)]="customer.pincode" placeholder="Pincode"required pattern="[0-9]{6}"#pincode="ngModel"
+                        [class.is-invalid]="pincode.invalid&&state.touched"/>
+                        <div *ngIf="pincode.errors && (pincode.invalid && pincode.touched)">
+                          <small class="text-danger" *ngIf="pincode.errors?.['required']">Required Field</small>
+                          <small class="text-danger"*ngIf="pincode.errors?.['pattern']">Enter a valid Pincode</small>
+                        </div></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                      <label>Gender</label>
+                    <div class="select">
+                        <select [(ngModel)]="customer.gender" name="gender"placeholder="Gender"><option *ngFor = "let gender of genders">{{gender}}</option></select>
+                    </div></div>                 
+                     <div class="col-md-6">
+                      <label>Password</label><input type="text" class="form-control" [(ngModel)]="customer.password" placeholder="password"required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters"
+                        #password="ngModel"  [class.is-invalid]="password.invalid&&password.touched"/>
+                        
+                        <!-- <small class="text-danger" [class.d-none]="password.valid||password.untouched">Required field</small> -->
+                        <div *ngIf="password.errors && (password.invalid && password.touched)">
+                          <small class="text-danger" *ngIf="password.errors?.['required']">Password is Required</small>
+                          <small class="text-danger"*ngIf="password.errors?.['pattern']">Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters</small>
+                        </div></div>
+                </div>
+              
+                <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button"(click)="saveProfile(customer.customerId,customer)">Save Profile</button></div>
+                
+            </div>
+        
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

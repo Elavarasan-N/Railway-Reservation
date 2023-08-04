@@ -1,0 +1,62 @@
+<div class="header" >
+    <nav>
+        <a class="navbar-brand" href="#">
+            <img src=".\assets\logo.jpg" width="100" height="100" class="d-inline-block align-centre" alt="">
+            <b style="font-size: large;">RAILRESERVE.IN</b>
+        </a>
+      <p style="font-size: large;"><strong>Life is a journey, enjoy the ride</strong></p>
+      
+<div class="topnav">
+
+    <div class="topnav-centered">
+      <a href="/welcomepage" class="active">Home</a>
+    </div>
+
+    <a href="/adminhome">Go Back</a> 
+    <a href="/contact">Contact</a>
+ 
+    <div class="topnav-right">
+      <a href="/privacy">Privacy</a>
+      <a href="/aboutus" (click)="aboutUs()">About us</a>
+      <a href="/welcomepage">Logout</a>
+    </div>
+  </div>
+<h2 style="text-align:center">Payment List</h2>
+        <table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> First Name</th>
+            <th> Last Name</th>
+            <th> Email</th>
+            <th> District</th>
+            <th> State</th>
+            <th>Pincode</th>
+            <th>Train Name</th>
+            <th>Train Number</th>
+            <th>Class Type</th>
+            <th>Payment Id</th>
+            <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let payment of paymentlist" >
+            <td> {{ payment.firstName}} </td>
+            <td> {{ payment.lastName}}</td>
+            <td> {{ payment.email}} </td>
+            <td> {{ payment.district}} </td>
+            <td> {{ payment.state}} </td>
+            <td> {{ payment.pincode}} </td>
+            <td> {{ payment.trainName}} </td>
+            <td> {{ payment.trainId}} </td>
+            <td> {{ payment.classType}} </td>
+            <td> {{ payment.paymentId}} </td>
+            <td> {{ payment.totalPrice}} </td>
+        </tr>
+    </tbody>
+</table>
+    </nav>
+</div>
+<div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+<app-footer></app-footer>

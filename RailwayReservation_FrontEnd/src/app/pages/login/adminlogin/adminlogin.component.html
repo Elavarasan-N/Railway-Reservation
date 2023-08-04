@@ -1,0 +1,46 @@
+<app-header></app-header>
+<!--<nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+    <div class="container-fluid">      
+    <ul class = "nav navbar-nav"> 
+        <button (click)="back()"class="btn btn-primary navbar-btn">Go Back</button>         
+    </ul>
+    </div>
+  </nav>-->
+
+  <div style="background-image: url('https://www.comohotels.com/sites/default/files/COMO_Metropolitan_Miami_Beach_ZOOM_Backgrounds_4_0.jpg');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+      <div class="row d-flex justify-content-center">
+          <div class="col-lg-4">
+            <h2 style="text-align: center;"class="fw-bold mb-5"><b style="color:mediumblue" >Admin Login</b></h2>
+            <form #adminForm="ngForm" (ngSubmit)="adminLogin()">
+              
+              <div class="form-outline mb-4">
+              <label>Email</label>
+            <input type="email" name="emailID" class="form-control" placeholder="example@gmail.com"[(ngModel)]="admin.email" required 
+            #email="ngModel"
+            [class.is-invalid]="email.invalid&&email.touched"/>
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors?.['required']">Email is Required</small>
+              <small class="text-danger"*ngIf="email.errors?.['pattern']">Enter valid Email</small>
+            </div>
+         
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" placeholder="************"[(ngModel)]="admin.password" required
+            #password="ngModel" [class.is-invalid]="password.invalid&&password.touched"/>
+            <div *ngIf="password.errors && (password.invalid && password.touched)">
+              <small class="text-danger" *ngIf="password.errors?.['required']">Password is Required</small>
+              <small class="text-danger"*ngIf="password.errors?.['pattern']">Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+            </div>
+              </div>
+              
+              <button type="submit" [disabled]="adminForm.invalid" class="btn btn-primary btn-block mb-4">Login</button>
+            </form></div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div id="copyright"style="text-align:center"><b style="color: oldlace;">&reg;All rights reserved</b></div>
+      </div></div>
+      
+       
+      
+      
+      <app-footer></app-footer>
+              
+  

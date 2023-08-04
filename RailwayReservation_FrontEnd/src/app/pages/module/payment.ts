@@ -1,0 +1,19 @@
+export class Payment {
+    trainId:any;
+    firstName:any;
+    lastName:any;
+    district:any;
+    state:any;
+    pincode:any;
+    email:any;
+    trainName:any;
+    totalPrice:any;
+    paymentId:any;
+    trainPrice:any;
+    nameOnCard:any;
+    cardNumber:any;
+    expYear:any;
+    cvv:any;
+    paidDate:any;
+    paymentMode:any;
+}

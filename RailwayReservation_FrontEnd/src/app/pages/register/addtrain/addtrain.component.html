@@ -1,0 +1,132 @@
+<div class="header" >
+  <nav>
+      <a class="navbar-brand" href="#">
+          <img src=".\assets\logo.jpg" width="100" height="100" class="d-inline-block align-centre" alt="">
+          <b style="font-size: large;">RAILRESERVE.IN</b>
+      </a>
+    <p style="font-size: large;"><strong>Life is a journey, enjoy the ride</strong></p>
+    
+<div class="topnav">
+
+  <div class="topnav-centered">
+    <a href="/welcomepage" class="active">Home</a>
+  </div>
+
+  <a href="/trainlist">Go Back</a> 
+  <a href="/contact">Contact</a>
+
+  <div class="topnav-right">
+    <a href="/privacy">Privacy</a>
+    <a href="/aboutus" (click)="aboutUs()">About us</a>
+    <a href="/welcomepage">Logout</a>
+  </div>
+</div>
+<div class="container" >
+    <div class="card">
+        <h1>Add Train</h1>
+<form #registerform = "ngForm" (ngSubmit)="saveTrain()">
+
+  <div class="form-group">
+    <label>Train Image</label>
+    <input type="text" class ="form-control" id = "image"
+        [(ngModel)] ="train.trainImage" name = "image"required #trainImage="ngModel"
+        [class.is-invalid]="trainImage.invalid&&trainImage.touched"/>
+        <small class="text-danger" [class.d-none]="trainImage.valid||trainImage.untouched">Required field</small>
+        <small class="text-danger"*ngIf="trainImage.errors?.['pattern']">Insert a Proper image</small>
+</div>
+
+    <div class="form-group">
+      <label>Train Name</label>
+      <input type="text" class="form-control" [(ngModel)]="train.trainName"
+       name="trainname" id="trainname" placeholder="Enter train name" #trainname="ngModel" required
+       [class.is-invalid]="trainname.invalid&&trainname.touched"/>
+       <small class="text-danger" [class.d-none]="trainname.valid||trainname.untouched">Required field</small>
+       <small class="text-danger"*ngIf="trainname.errors?.['pattern']">Enter a valid Train Name</small>
+    </div>
+
+    <div class="form-group">
+        <label>Source</label>
+        <input type="text" [(ngModel)]="train.source" name="source" id="source" 
+        class="form-control" placeholder="Enter source" #source="ngModel" required
+        [class.is-invalid]="source.invalid&&source.touched" />
+        <small class="text-danger" [class.d-none]="source.valid||source.untouched">Required field</small>
+       <small class="text-danger"*ngIf="source.errors?.['pattern']">Enter a valid Source</small>
+      </div> 
+
+      <div class="form-group">
+        <label>Destination</label>
+        <input type="text" [(ngModel)]="train.destination" name="destination" id="destination" 
+        class="form-control" placeholder="Enter Destination" #destination="ngModel" required
+        [class.is-invalid]="destination.invalid&&destination.touched" />
+        <small class="text-danger" [class.d-none]="destination.valid||destination.untouched">Required field</small>
+       <small class="text-danger"*ngIf="destination.errors?.['pattern']">Enter a valid Destination</small>
+      </div> 
+
+      <div class="form-group">
+        <label>Departure Time</label>
+        <input type="datetime-local" [(ngModel)]="train.departureTime" name="departuretime" 
+        id="departuretime" class="form-control" #departuretime="ngModel" required
+        [class.is-invalid]="departuretime.invalid&&departuretime.touched" />
+        <small class="text-danger" [class.d-none]="departuretime.valid||departuretime.untouched">Required field</small>
+       <small class="text-danger"*ngIf="departuretime.errors?.['pattern']">Enter a valid Departure Time</small>
+      </div>
+
+      <div class="form-group">
+        <label>Arrival Time</label>
+        <input type="datetime-local" [(ngModel)]="train.arrivalTime" name="arrivaltime" id="arrivaltime"
+         class="form-control" #arrivaltime="ngModel" required
+         [class.is-invalid]="arrivaltime.invalid&&arrivaltime.touched" />
+        <small class="text-danger" [class.d-none]="arrivaltime.valid||arrivaltime.untouched">Required field</small>
+       <small class="text-danger"*ngIf="arrivaltime.errors?.['pattern']">Enter a valid Arrival Time</small>
+      </div>
+
+      <div class="form-group">
+        <label>Distance</label>
+        <input type="number" [(ngModel)]="train.distance" name="distance" id="distance" 
+        class="form-control" placeholder="Enter distance" #distance="ngModel" required
+        [class.is-invalid]="distance.invalid&&distance.touched" />
+        <small class="text-danger" [class.d-none]="distance.valid||distance.untouched">Required field</small>
+       <small class="text-danger"*ngIf="distance.errors?.['pattern']">Enter a valid Distance</small>
+      </div>
+
+      <div class="form-group">
+        <label>Class Type</label>
+        <input type="text" [(ngModel)]="train.classType" name="classtype" id="classtype" 
+        class="form-control" placeholder="Enter class type" #classtype="ngModel" required
+        [class.is-invalid]="classtype.invalid&&classtype.touched" />
+        <small class="text-danger" [class.d-none]="classtype.valid||classtype.untouched">Required field</small>
+       <small class="text-danger"*ngIf="classtype.errors?.['pattern']">Enter a valid Class Type</small>
+      </div>
+
+      <div class="form-group">
+        <label>Total Seats</label>
+        <input type="number" [(ngModel)]="train.totalSeats" name="totalseats" id="totalseats" 
+        class="form-control" placeholder="Enter total seats" #totalseats="ngModel" required
+        [class.is-invalid]="totalseats.invalid&&totalseats.touched" />
+        <small class="text-danger" [class.d-none]="totalseats.valid||totalseats.untouched">Required field</small>
+       <small class="text-danger"*ngIf="totalseats.errors?.['pattern']">Enter a valid Total seats</small>
+      </div>
+
+      <div class="form-group">
+        <label>Available Seats</label>
+        <input type="number" [(ngModel)]="train.availableSeats" name="availableseats" id="availableseats"
+         class="form-control" placeholder="Enter availableseats" #availableseats="ngModel" required
+         [class.is-invalid]="availableseats.invalid&&availableseats.touched" />
+        <small class="text-danger" [class.d-none]="availableseats.valid||availableseats.untouched">Required field</small>
+       <small class="text-danger"*ngIf="availableseats.errors?.['pattern']">Enter a valid Available Seats</small>
+      </div>
+
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" [(ngModel)]="train.trainPrice" name="trainprice" id="trainprice" 
+        class="form-control" placeholder="Enter Price" #trainprice="ngModel" required
+        [class.is-invalid]="trainprice.invalid&&trainprice.touched" />
+        <small class="text-danger" [class.d-none]="trainprice.valid||trainprice.untouched">Required field</small>
+       <small class="text-danger"*ngIf="trainprice.errors?.['pattern']">Enter a valid Train Price</small>
+      </div>
+
+    <button [disabled]="registerform.form.invalid" type="submit" class="btn btn-success">Save</button>
+  </form>
+    </div>
+</div>
+<app-footer></app-footer>

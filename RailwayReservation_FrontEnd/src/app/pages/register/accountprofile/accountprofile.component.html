@@ -1,0 +1,99 @@
+<div class="header" >
+    <nav>
+        <a class="navbar-brand" href="#">
+            <img src=".\assets\logo.jpg" width="100" height="100" class="d-inline-block align-centre" alt="">
+            <b style="font-size: large;">RAILRESERVE.IN</b>
+        </a>
+      <p style="font-size: large;"><strong>Life is a journey, enjoy the ride</strong></p>
+  <nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+      <div class="container-fluid">
+          <button onclick="history.back()"class="btn btn-primary navbar-btn"style="width:80;height: 35;">Go Back</button>   
+  
+    <ul class = "nav navbar-nav">
+      <button id="home"(click)="home()"><i   class="fa fa-home" ></i>Home</button>
+       <button id="home"(click)="contactUs()"> <i class="fa fa-phone"></i>Contact</button>
+  
+       <button id="home"(click)="customerProfile()"> <i  class="bi bi-person"></i>Profile</button>
+  
+    </ul>
+    <button (click)="logOut()"class="btn btn-danger navbar-btn">Log out</button>
+      </div>
+  </nav>
+  <div class="container rounded bg-white mt-5">
+  <div class="row">
+      <div class="col-md-4 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src=".\assets\profile.png" width="90"><span class="font-weight-bold">{{customer.firstName}}</span><span class="text-black-50">{{customer.email}}</span><span>{{customer.district}}</span></div>
+      </div>
+      <div class="col-md-8">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                      <button class="btn" id="b1"(click)="backToCustomerHomePlace(customer.customerId)"><i class="fa fa-home"></i><b>Home</b></button></div>
+                  <h6 class="text-right"><b>Edit Profile</b></h6>
+              </div>
+
+                <div class="row mt-2">
+                <div class="col-md-6">
+                  <label>Account Number</label>
+                  <input type="number" class="form-control" [(ngModel)]="account.accountId" placeholder="Account number" #accountId="ngModel" readonly>
+                </div>
+
+                  <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="first name" [(ngModel)]="account.firstName" #firstname="ngModel" readonly>
+                  </div>
+          
+                  <div class="col-md-6">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control"[(ngModel)]="account.lastName" placeholder="last name" #lastname="ngModel" readonly/>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="col-md-6">
+                      <label>DOB</label>
+                      <input type="date" class="form-control" placeholder="DOB"[(ngModel)]="account.dateOfBirth" readonly>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label>Phone Number</label>
+                    <input type="text" class="form-control" [(ngModel)]="account.phoneNumber" placeholder="Phone number" #phonenumber="ngModel" readonly>
+              </div>
+
+                  <div class="col-md-6">
+                    <label>Email</label>
+                    <input type="text" class="form-control" placeholder="email" [(ngModel)]="account.email" #email="ngModel" readonly/>
+                  </div>
+        
+                  <div class="col-md-6">
+                    <label>District</label>
+                    <input type="text" class="form-control"[(ngModel)]="account.district" placeholder="district" #district="ngModel" readonly/>
+                  </div>
+
+                  <div class="col-md-6"><label>State</label><input type="text" class="form-control" placeholder="state " [(ngModel)]="account.state" #state="ngModel" readonly/>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label>Pincode</label>
+                    <input type="text" class="form-control" [(ngModel)]="account.pincode" placeholder="Pincode" #pincode="ngModel" readonly/>
+              </div>
+
+              <div class="row mt-3">
+                  <div class="col-md-6">
+                    <label>Gender</label>
+                    <input type="text" class="form-control" [(ngModel)]="account.gender" placeholder="Gender" #gender="ngModel" readonly/>
+                  </div>  
+            
+              <div class="mt-5 text-right">
+                <button class="btn btn-primary profile-button" type="button"(click)="saveProfile(account.accountId,account)">Save Profile</button>
+              </div>
+          </div>
+                  </div>
+                </div>
+          </div></div>
+  </div>
+</div>
+  </div>
+    </nav>
+</div>
+  <app-footer></app-footer>

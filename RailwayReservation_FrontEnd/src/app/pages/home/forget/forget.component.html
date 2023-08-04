@@ -1,0 +1,47 @@
+<div class="bg">
+    <div class="center" style="position:relative;top:260px;background-color: aliceblue;">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+      
+        <form (ngSubmit) = "submitEmail()"style="background-color:#E6E6FA"#emailform="ngForm">
+            
+           
+               
+        <p class="text-danger">{{message}}</p>
+            <div class="form-group">
+               <label>Enter Your Email</label>
+                <input type="text" class ="form-control" id = "emailID"
+                    [(ngModel)] = "customer.email" name = "email"placeholder="Email"required #email="ngModel" 
+                    [class.is-invalid]="email.invalid&&email.touched"/>
+                    <div *ngIf="email.errors && (email.invalid && email.touched)">
+                      <small class="text-danger" *ngIf="email.errors?.['required']">Email is Required</small>
+                      <small class="text-danger"*ngIf="email.errors?.['pattern']">Enter valid Email id</small>
+                    </div>
+    
+            </div>
+            <button [disabled]="emailform.form.invalid"class = "btn btn-success" type ="submit">Submit Email</button>
+    
+            </form>
+          <!-- <td *ngIf = "room.status;else condition1 ">Booked</td>
+                  <ng-template   #condition1>  <td>Not Booked</td></ng-template>  -->
+                  <form (ngSubmit) = "submitPass()"style="background-color:#E6E6FA"#pass1form="ngForm">
+    
+            <div class="form-group"*ngIf = "status">
+               <label>Enter New Password</label>
+                <input type="password" name="password" class="form-control"[(ngModel)]="customer.password" placeholder="password"required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                #password="ngModel"          [class.is-invalid]="password.invalid&&password.touched"/>
+                
+                <div *ngIf="password.errors && (password.invalid && password.touched)">
+                  <small class="text-danger" *ngIf="password.errors?.['required']">password is required</small>
+                  <small class="text-danger"*ngIf="password.errors?.['pattern']">must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+                </div>
+            
+              <button [disabled]="pass1form.form.invalid"class = "btn btn-success" type ="submit">Submit New Password</button>
+            </div>
+            </form>
+    
+        </div> 
+            </div></div></div></div>
+    

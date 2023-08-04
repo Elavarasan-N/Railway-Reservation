@@ -1,0 +1,90 @@
+<div class="header" >
+  <nav>
+      <a class="navbar-brand" href="#">
+          <img src=".\assets\logo.jpg" width="100" height="100" class="d-inline-block align-centre" alt="">
+          <b style="font-size: large;">RAILRESERVE.IN</b>
+      </a>
+    <p style="font-size: large;"><strong>Life is a journey, enjoy the ride</strong></p>
+    
+<div class="topnav">
+
+  <div class="topnav-centered">
+    <button id="home" style="align-content: center;" (click)="home()" class="fa fa-home">Home</button>
+  </div>
+   
+  <a href="/contact">Contact</a>
+  <button style="margin-right: 60%;margin-top: 5px;" onclick="history.back()"class="btn btn-danger navbar-btn">Go Back</button> 
+
+  <div class="topnav-right">
+    <a href="/privacy">Privacy</a>
+    <a href="/aboutus">About us</a>
+  </div>
+</div>
+      <h2 style="text-align: center;"class="fw-bold mb-5"><b style="color:mediumblue">Add Money</b></h2>
+      <div class="container">
+      <form #addMoneyform="ngForm" >
+            <div class="form-group row" >
+              <label for="fname">Accepted Cards</label>
+          <div class="icon-container">
+            <i class="fa fa-cc-visa" style="color:navy;"></i>
+            <i class="fa fa-cc-amex" style="color:blue;"></i>
+            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+            <i class="fa fa-cc-discover" style="color:orange;"></i>
+          </div>
+              
+            <div class="w-25 p-3">
+                <label>Name on Card</label>
+            <input type="text" name="nameOnCard"class="form-control" placeholder="Name on card" [(ngModel)]="card.nameOnCard"
+            required  pattern="[a-zA-Z'-'\s]*"#nameoncard="ngModel" 
+              [class.is-invalid]="nameoncard.invalid&&nameoncard.touched"/>
+              <div *ngIf="nameoncard.errors && (nameoncard.invalid && nameoncard.touched)">
+                <small class="text-danger" *ngIf="nameoncard.errors?.['required']">required field</small>
+                <small class="text-danger"*ngIf="nameoncard.errors?.['pattern']">enter a valid name</small>
+              </div> 
+            </div>
+            
+              <div class="w-25 p-3">
+                  <label>Card Number</label>
+              <input type="text" name="cardNumber"class="form-control" placeholder="1111-2222-3333-4444"[(ngModel)]="card.cardNumber"pattern="[0-9]{16}"
+              required #cardnumber="ngModel"
+                  [class.is-invalid]="cardnumber.invalid&&cardnumber.touched"/>
+                  <div *ngIf="cardnumber.errors &&(cardnumber.invalid && cardnumber.touched)">
+                      <small class="text-danger" *ngIf="cardnumber.errors?.['required']">required field</small>
+                      <small class="text-danger"*ngIf="cardnumber.errors?.['pattern']">please enter a 16 digit number</small>
+                    </div>
+              </div>
+                       
+              <div class="w-25 p-3">
+                  <label 	class="fa fa-calendar">Exp Date</label>
+              <input type="month" name="expYear"class="form-control" placeholder="expire year"[(ngModel)]="card.expYear" 
+              required #expdate="ngModel"
+                  [class.is-invalid]="expdate.invalid&&expdate.touched"/>
+                  <small class="text-danger" [class.d-none]="expdate.valid||expdate.untouched">Required field</small>
+              </div>
+
+              <div class="w-25 p-3">
+                  <label>CVV</label>
+              <input type="text" name="cvv"class="form-control" placeholder="cvv"[(ngModel)]="card.cvv" 
+              pattern="[0-9]{3}"
+              required #cvv="ngModel"
+                  [class.is-invalid]="cvv.invalid&&cvv.touched"/>
+                  <div *ngIf="cvv.errors &&(cvv.invalid && cvv.touched)">
+                      <small class="text-danger" *ngIf="cvv.errors?.['required']">required field</small>
+                      <small class="text-danger"*ngIf="cvv.errors?.['pattern']">please enter a 3 digit number</small>
+                    </div>
+              </div>
+
+              <div class="w-25 p-3">
+                  <label>Amount</label>
+                  <input style="text-align: center;" type="number" class="form-control" name="amount" id="amount" placeholder="1000" [(ngModel)]="card.money">
+              </div>
+              
+              <div>
+            <button [disabled]="addMoneyform.form.invalid"type="submit" class="btn btn-primary btn-block mb-4" (click)="addMoney()">
+              Add
+            </button>
+              </div>
+              </div>
+      </form>
+      </div>
+<app-footer></app-footer>

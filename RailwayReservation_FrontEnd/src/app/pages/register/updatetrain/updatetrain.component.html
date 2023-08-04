@@ -1,0 +1,125 @@
+<div class="header" >
+    <nav>
+        <a class="navbar-brand" href="#">
+            <img src=".\assets\logo.jpg" width="100" height="100" class="d-inline-block align-centre" alt="">
+            <b style="font-size: large;">RAILRESERVE.IN</b>
+        </a>
+      <p style="font-size: large;"><strong>Life is a journey, enjoy the ride</strong></p>
+      
+  <div class="topnav">
+  
+    <div class="topnav-centered">
+      <a href="/welcomepage" class="active">Home</a>
+    </div>
+  
+    <a href="/trainlist">Go Back</a> 
+    <a href="/contact">Contact</a>
+  
+    <div class="topnav-right">
+      <a href="/privacy">Privacy</a>
+      <a href="/aboutus" (click)="aboutUs()">About us</a>
+      <a href="/welcomepage">Logout</a>
+    </div>
+  </div>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+    <div class="col-md-6 offset-md-3">
+    <h3>Edit Train </h3>
+    <form (ngSubmit) = "onSubmit()"style="background-color:#E6E6FA" #UpdateTrain="ngForm">
+
+        <div class="form-group">
+            <label>Train Image</label>
+    <input type="text" class ="form-control" id = "image"
+        [(ngModel)]="train.trainImage" name = "image"required #trainImage="ngModel"
+        [class.is-invalid]="trainImage.invalid&&trainImage.touched"/>
+        <small class="text-danger" [class.d-none]="trainImage.valid||trainImage.untouched">Required field</small>
+        <small class="text-danger"*ngIf="trainImage.errors?.['pattern']">Insert a Proper image</small>
+        </div>
+
+        <div class="form-group">
+            <label>Train Name</label>
+            <input type="text" class ="form-control" id = "trainName"
+                [(ngModel)]="train.trainName" name="trainname" required #trainname="ngModel" 
+                [class.is-invalid]="trainname.invalid&&trainname.touched"/>
+                <small class="text-danger" [class.d-none]="trainname.valid||trainname.untouched">Required field</small>
+   </div>
+        <div class="form-group">
+        <label>Source</label>
+        <input type="text" class ="form-control" id = "source"
+        [(ngModel)] = "train.source" name = "source" #source="ngModel"
+        [class.is-invalid]="source.invalid&&source.touched"/>
+        <div *ngIf="source.errors &&(source.invalid && source.touched)">
+            <small class="text-danger" *ngIf="source.errors?.['required']">required field</small>
+            <small class="text-danger"*ngIf="source.errors?.['pattern']">Enter a source name</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Destination</label>
+            <input type="text" class ="form-control" id = "destination"
+                [(ngModel)] = "train.destination" name = "destination" #destination="ngModel"
+                [class.is-invalid]="destination.invalid&&destination.touched"/>
+                
+                <div *ngIf="destination.errors &&(destination.invalid && destination.touched)">
+                    <small class="text-danger" *ngIf="destination.errors?.['required']">required field</small>
+                    <small class="text-danger"*ngIf="destination.errors?.['pattern']">Enter a destination name</small>
+                  </div>
+        </div>
+        <div class="form-group">
+            <label>Departure Time</label>
+            <input type="text" class ="form-control" id = "dtime"
+                [(ngModel)] = "train.departureTime" name = "departureTime"required #departureTime="ngModel" 
+                    [class.is-invalid]="departureTime.invalid&&departureTime.touched"/>
+              <small class="text-danger" [class.d-none]="departureTime.valid||departureTime.untouched">Required field</small>
+
+        </div>
+        <div class="form-group">
+            <label>Arrival Time</label>
+            <input type="text" class ="form-control" id = "atime"
+                [(ngModel)] = "train.arrivalTime" name = "arrivalTime"required #arrivalTime="ngModel" 
+                    [class.is-invalid]="arrivalTime.invalid&&arrivalTime.touched"/>
+              <small class="text-danger" [class.d-none]="arrivalTime.valid||arrivalTime.untouched">Required field</small>
+
+        </div>
+        <div class="form-group">
+            <label>Distance</label>
+            <input type="number" class ="form-control" id = "distance"
+                [(ngModel)] = "train.distance" name = "distance" required #distance="ngModel" 
+                    [class.is-invalid]="distance.invalid&&distance.touched"/>
+              <small class="text-danger" [class.d-none]="distance.valid||distance.untouched">Required field</small>
+        </div>
+        <div class="form-group">
+            <label>Class Type</label>
+            <input type="text" class ="form-control" id = "classtype"
+                [(ngModel)] = "train.classType" name = "classType"required #classtype="ngModel" 
+                    [class.is-invalid]="classtype.invalid&&classtype.touched"/>
+              <small class="text-danger" [class.d-none]="classtype.valid||classtype.untouched">Required field</small>
+        </div>
+        <div class="form-group">
+            <label>Total Seats</label>
+            <input type="number" class ="form-control" id = "totalSeats"
+                [(ngModel)] = "train.totalSeats" name = "totalSeats" required #totalSeats="ngModel" 
+                    [class.is-invalid]="totalSeats.invalid&&totalSeats.touched"/>
+              <small class="text-danger" [class.d-none]="totalSeats.valid||totalSeats.untouched">Required field</small>
+        </div>
+        <div class="form-group">
+            <label>Available Seats</label>
+            <input type="number" class ="form-control" id = "availableSeats"
+                [(ngModel)] = "train.availableSeats" name = "availableSeats" required #classtype="ngModel" 
+                    [class.is-invalid]="classtype.invalid&&classtype.touched"/>
+              <small class="text-danger" [class.d-none]="classtype.valid||classtype.untouched">Required field</small>
+        </div>
+        <div class="form-group">
+            <label>Price Per person</label>
+            <input type="number" class ="form-control" id = "trainprice"
+                [(ngModel)] = "train.trainPrice" name = "trainprice" required #trainprice="ngModel" 
+                    [class.is-invalid]="trainprice.invalid&&trainprice.touched"/>
+              <small class="text-danger" [class.d-none]="trainprice.valid||UpdateTrain.untouched">Required field</small>
+        </div>
+        <button [disabled]="UpdateTrain.form.invalid" class = "btn btn-success" type ="Submit">Submit</button>
+    
+    </form>
+    </div> 
+        </div></div></div>
+
+<app-footer></app-footer>

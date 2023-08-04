@@ -1,0 +1,63 @@
+<div class="header" >
+    <nav>
+        <a class="navbar-brand" href="#">
+            <img src=".\assets\logo.jpg" width="100" height="100" class="d-inline-block align-centre" alt="">
+            <b style="font-size: large;">RAILRESERVE.IN</b>
+        </a>
+      <p style="font-size: large;"><strong>Life is a journey, enjoy the ride</strong></p>
+  <nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+      <div class="container-fluid">
+      </div>
+  </nav>
+    </nav>
+</div>
+<nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+    <div class="container-fluid">
+        <button onclick="history.back()"class="btn btn-primary navbar-btn"style="width:80;height: 35;">Go Back</button>   
+  <ul class = "nav navbar-nav">
+    <button id="home"(click)="home()"><i   class="fa fa-home" ></i>Home</button>
+     <button id="home"(click)="contactUs()"> <i class="fa fa-phone"></i>Contact</button>
+  </ul>
+  <button (click)="logOut()"class="btn btn-danger navbar-btn">Log out</button>
+    </div>
+</nav>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+<h2 style="text-align:center">Booking Details</h2>
+        <table #tableform class = "table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Class Type</th>
+            <th>Train Number</th>
+            <th>Train Name</th>
+            <th>Paid Price</th>
+            <th>Number of Travellers</th>       
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let booking of bookingview" >
+        
+            <td> {{ booking.firstName + " " + booking.lastName}} </td>
+            <td> {{ booking.classType}}</td>
+            <td> {{ booking.trainId}} </td>
+            <td> {{ booking.trainName}} </td>
+            <td> {{ booking.trainPrice }} </td>
+            <td> {{ booking.traveller}} </td>
+            
+            <td><button type="button" class="btn btn-danger"(click)="cancelBooking(booking.bookingId)">Cancel</button></td>
+
+       </tr>
+    </tbody>
+</table>
+ 
+        </div></div></div>
+        <div class="text-right">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+    <app-footer></app-footer>
+
+
+
+
